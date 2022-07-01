@@ -31,7 +31,7 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
   const todo = req.body.add;
   knex("tasks")
-    .insert({user_id: 1, content: todo})
+    .insert({ user_id: 1, content: todo })
     .then(function () {
       res.redirect('/')
     })
@@ -42,4 +42,5 @@ router.post('/', function (req, res, next) {
       });
     });
 });
+
 module.exports = router;
