@@ -5,7 +5,9 @@ const knex = require('../db/knex');
 router.get('/', function (req, res, next) {
   const userId = req.session.userid;
   const isAuth = Boolean(userId);
-  knex("tasks")
+  knex("tasks").where({
+    user_id: userId,
+  })
     .select("*")
     .then(function (results) {
       res.render('index', {
@@ -28,7 +30,7 @@ router.post('/', function (req, res, next) {
   const isAuth = Boolean(userId);
   const todo = req.body.add;
   knex("tasks")
-    .insert({user_id: 1, content: todo})
+    .insert({ user_id: userId, content: todo })
     .then(function () {
       res.redirect('/')
     })
