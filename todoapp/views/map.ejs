@@ -17,7 +17,7 @@
     <p>現在位置</p>
     <p>緯度：<span id="latitude">???</span><span>度</span></p>
     <p>経度：<span id="longitude">???</span><span>度</span></p>
-    <button onclick="send()">送信</button> 
+    <input type="hidden" name="example" id="position" value=<%= JSON.stringify(position) %>>
     <ul>
       <p>データベースから取得した緯度経度</p>
     <% for(let latlng of position){ %>
@@ -27,6 +27,12 @@
         </span></li>
       <% } %>
     </ul>
+
+    <form action="/postposition" method="post">
+      <input type="hidden" name="lat" />
+      <input type="hidden" name="lng" />
+      <input type="submit" value="送信" />
+    </form>
 </body>
 
 </html>
