@@ -31,8 +31,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // router
 app.use('/', require('./routes'));
 app.use('/signup', require('./routes/signup'));
+app.use('/map', require('./routes/map'));
 app.use('/signin', require('./routes/signin'));
 app.use('/logout', require('./routes/logout'));
+app.use('/postposition', require('./routes/postposition'));
+app.use('/deleteposition', require('./routes/deleteposition'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
