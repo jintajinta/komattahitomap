@@ -1,4 +1,3 @@
-let hello = "hello"
 let latitude
 let longitude
 function init() {
@@ -6,15 +5,16 @@ function init() {
     console.log(position_data);
     let position=JSON.parse(position_data);
     console.log(position)
-    var map = L.map('mapcontainer');
+    var map = L.map('map');
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-    map.setView([35.4, 136], 5);
+    
     L.tileLayer('https://c.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
     }).addTo(map);
-
+    let pingcontents=""
     for(i=0;i<=position.length-1;i++){
-        L.marker([position[i].lng, position[i].lat]).addTo(map).bindPopup("日本の端").openPopup();
+        pingcontents="場所:"+position[i].contents+"<br><input type = \"button\" value = \"削除\" onClick = \"deletepositon("+position[i].id+")\">"
+        L.marker([position[i].lat, position[i].lng]).addTo(map).bindPopup(pingcontents).openPopup();
     }
 
     function successCallback(position) {
@@ -24,6 +24,9 @@ function init() {
         // 経度を取得し画面に表示
         longitude = position.coords.longitude;
         document.getElementById("longitude").innerHTML = longitude;
+        document.getElementById("mylat").value = latitude;
+        document.getElementById("mylng").value = longitude;
+        map.setView([latitude, longitude], 10);
         L.marker([latitude, longitude]).addTo(map).bindPopup("現在地").openPopup();
     };
     // 取得に失敗した場合の処理
@@ -33,8 +36,7 @@ function init() {
     };
 }
 
-function send(a) {
-    console.log(a)
+function deletepositon(id) {
+    document.getElementById("pingid").value = id;
+    document.deleteform.submit();
 }
-
-
