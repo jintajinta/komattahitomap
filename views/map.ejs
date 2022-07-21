@@ -17,15 +17,7 @@
     <p>現在位置</p>
     <p>緯度：<span id="latitude">???</span><span>度</span></p>
     <p>経度：<span id="longitude">???</span><span>度</span></p>
-    <input type="hidden" name="example" id="position" value=<%= JSON.stringify(position) %>>
     <ul>
-      <p>データベースから取得した緯度経度</p>
-    <% for(let latlng of position){ %>
-      <li><span>
-          <%= latlng.lat %> <%= latlng.lng %>
-          
-        </span></li>
-      <% } %>
     </ul>
 
     <form name = "deleteform" action="/deleteposition" method="post">
