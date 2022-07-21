@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cookieSession = require("cookie-session");
 const secret = "secretCuisine123";
+const bcrypt = require('bcrypt');
 
 const app = express();
 
@@ -53,4 +54,5 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
+module.exports.bcrypt = bcrypt;
 module.exports = app;

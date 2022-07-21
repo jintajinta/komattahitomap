@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
-const bcrypt = require("bcrypt");
+const bcrypt = require('../app.js').bcrypt
 
 router.get('/', function (req, res, next) {
   res.render('signup', {
