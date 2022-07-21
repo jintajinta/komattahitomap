@@ -3,10 +3,10 @@
 module.exports = {
 
   development: {
-    client: "mysql",
+    client: "pg",
     connection: {
       database: "todo_app",
-      user: "user",
+      user: "postgres",
       password: "sqlpassword",
     },
     pool: {
@@ -16,10 +16,10 @@ module.exports = {
   },
 
   staging: {
-    client: "mysql",
+    client: "pg",
     connection: {
       database: "todo_app",
-      user: "user",
+      user: "postgres",
       password: "sqlpassword",
     },
     pool: {
@@ -29,10 +29,10 @@ module.exports = {
   },
 
   production: {
-    client: "mysql",
+    client: "pg",
     connection: {
       database: "todo_app",
-      user: "user",
+      user: "postgres",
       password: "sqlpassword",
     },
     pool: {
