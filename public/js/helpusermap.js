@@ -3,17 +3,17 @@ let longitude
 function init() {
     let task_data = document.getElementById("tasks").value;
     console.log(task_data);
-    let task=JSON.parse(task_data);
+    let task = JSON.parse(task_data);
     var map = L.map('map');
     map.setView([36.00, 137], 10);
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-    
+
     L.tileLayer('https://c.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
     }).addTo(map);
-    let pingcontents=""
-    for(i=0;i<=task.length-1;i++){
-        pingcontents="内容:"+task[i].class+"<br>内容:"+task[i].content+"<br><input type = \"button\" value = \"助けに行く\" onClick = \"deletepositon("+task[i].id+")\">"
+    let pingcontents = ""
+    for (i = 0; i <= task.length - 1; i++) {
+        pingcontents = "内容:" + task[i].class + "<br>内容:" + task[i].content + "<br><input type = \"button\" value = \"助けに行く\" onClick = \"deletepositon(" + task[i].id + ")\">"
         L.marker([task[i].lat, task[i].lng]).addTo(map).bindPopup(pingcontents).openPopup();
     }
 

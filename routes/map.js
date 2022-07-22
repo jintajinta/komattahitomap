@@ -3,23 +3,23 @@ const router = express.Router();
 const knex = require('../db/knex');
 
 router.get('/', function (req, res, next) {
-    knex("position_test")
+  knex("position_test")
     .select("*")
     .then(function (results) {
-        console.log(results[0].lat)
-        res.render("map",
+      console.log(results[0].lat)
+      res.render("map",
         {
-            title: 'Map',
-            position: results,
+          title: 'Map',
+          position: results,
         })
-      })
-      .catch(function (err) {
-        console.error(err);
-        res.render("map",
+    })
+    .catch(function (err) {
+      console.error(err);
+      res.render("map",
         {
-            title: 'Map',
+          title: 'Map',
         })
-      });
+    });
 });
 
 
