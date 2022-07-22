@@ -6,7 +6,7 @@ router.get('/', function (req, res, next) {
     knex("tasks")
     .select("*")
     .then(function (results) {
-        console.log(results[0].lat)
+        console.log(results)
         res.render("helpuser",
         {
             title: '助ける人用ページ',
