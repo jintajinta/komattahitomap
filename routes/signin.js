@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const knex = require("../db/knex");
+const bcrypt = require("bcrypt");
 
 router.get('/', function (req, res, next) {
   res.render("signin", {
@@ -24,7 +25,7 @@ router.post('/', function (req, res, next) {
           errorMessage: ["ユーザが見つかりません"],
           isAuth: isAuth,
         });
-      } else if (password == results[0].password) {
+      } else if (await bcrypt.compare(password, results[0].password)) {
         req.session.userid = results[0].id;
         res.redirect('/');
       } else {
