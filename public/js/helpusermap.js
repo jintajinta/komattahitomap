@@ -1,7 +1,7 @@
 let latitude
 let longitude
 function init() {
-    let task_data = document.getElementById("position").value;
+    let task_data = document.getElementById("tasks").value;
     let task=JSON.parse(task_data);
     var map = L.map('map');
     map.setView([36.00, 137], 10);

@@ -14,7 +14,7 @@
 </head>
 <body onload="init()">
     <div id="map" style="width:600px;height:600px"></div>
-    <input type="hidden" name="example" id="position" value=<%= JSON.stringify(tasks) %>>
+    <input type="hidden" name="example" id="tasks" value=<%= JSON.stringify(tasks) %>>
 
     <form name = "deleteform" action="/deleteposition" method="post">
       <input type="number" id="pingid" name="pingid"/>
