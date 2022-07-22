@@ -27,6 +27,7 @@
 </script> 
 <body>
   <%- include('./error_messages'); %>
+  <% if(isAuth) { %>
     <form action="/tohelpuser" method="post">
         分類:
         <select name="classification" required>
@@ -42,6 +43,20 @@
         <input type="hidden" id="mylng" name="mylng"/>
       <input type="submit" value="送信" />
     </form>
+    <br>
+    あなたの投稿した困りごと
+    <ul>
+      <% for(let todo of todos){ %>
+        <li><span>
+            <%= todo.content %>
+          </span></li>
+        <% } %>
+    </ul>
+    <% } else { %>
+      <h1>困った人マップにようこそ</h1>
+      <a href="/signin">ログインしてください</a>
+      <a href="/signup">アカウント登録はこちら</a>
+      <% } %>
 </body>
 
 </html>

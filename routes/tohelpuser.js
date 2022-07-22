@@ -3,11 +3,27 @@ const router = express.Router();
 const knex = require('../db/knex');
 
 router.get('/', function (req, res, next) {
-        res.render("tohelpuser",
-        {
-            title: '助けられる人用ページ',
-        })
-});
+    const userId = req.session.userid;
+    const isAuth = Boolean(userId);
+    knex("tasks").where({
+      user_id: userId,
+    })
+      .select("*")
+      .then(function (results) {
+        res.render('index', {
+          title: '助けられる人用ページ',
+          todos: results,
+          isAuth: isAuth,
+        });
+      })
+      .catch(function (err) {
+        console.error(err);
+        res.render('index', {
+          title: '助けられる人用ページ',
+          isAuth: isAuth,
+        });
+      });
+  });
 
 router.post('/', function (req, res, next) {
     let mylng=req.body.mylng;
