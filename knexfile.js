@@ -3,42 +3,35 @@
 module.exports = {
 
   development: {
-    client: "mysql",
+    client: "pg",
+    client: 'pg',
     connection: {
-      database: "todo_app",
-      user: "user",
-      password: "sqlpassword",
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
+      connectionString: process.env.DATABASE_URL,
+      ssl: {
+        rejectUnauthorized: false
+      }
+    }
   },
 
   staging: {
-    client: "mysql",
+    client: "pg",
+    client: 'pg',
     connection: {
-      database: "todo_app",
-      user: "user",
-      password: "sqlpassword",
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
+      connectionString: process.env.DATABASE_URL,
+      ssl: {
+        rejectUnauthorized: false
+      }
+    }
   },
 
   production: {
-    client: "mysql",
+    client: 'pg',
     connection: {
-      database: "todo_app",
-      user: "user",
-      password: "sqlpassword",
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
+      connectionString: process.env.DATABASE_URL,
+      ssl: {
+        rejectUnauthorized: false
+      }
+    }
   }
 
 };

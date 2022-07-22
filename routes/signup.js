@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
-const bcrypt = require("bcrypt");
 
 router.get('/', function (req, res, next) {
   res.render('signup', {
@@ -27,10 +26,8 @@ router.post('/', function (req, res, next) {
           isAuth: isAuth,
         })
       } else if (password === repassword) {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        console.log(hashedPassword);
         knex("users")
-          .insert({name: username, password: hashedPassword})
+          .insert({name: username, password: password})
           .then(function () {
             res.redirect("/");
           })

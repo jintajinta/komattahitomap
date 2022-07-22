@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>
+    <%= title %>
+  </title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<script>
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    function successCallback(position) {
+        // 緯度を取得し画面に表示
+        latitude = position.coords.latitude;
+        // 経度を取得し画面に表示
+        longitude = position.coords.longitude;
+        document.getElementById("mylat").value = latitude;
+        document.getElementById("mylng").value = longitude;
+    };
+    // 取得に失敗した場合の処理
+    function errorCallback(error) {
+        console.log(error)
+        alert("位置情報が取得できませんでした");
+    };
+</script> 
+<body>
+  <%- include('./error_messages'); %>
+    <form action="/tohelpuser" method="post">
+        分類:
+        <select name="classification" required>
+            <option value="力仕事">力仕事</option>
+            <option value="軽作業">軽作業</option>
+            <option value="物探し">物探し</option>
+            <option value="道案内">道案内</option>
+            <option value="その他">その他</option>
+        </select>
+        内容:
+        <input type="text" id="content" name="contents" required/>
+        <input type="hidden" id="mylat" name="mylat"/>
+        <input type="hidden" id="mylng" name="mylng"/>
+      <input type="submit" value="送信" />
+    </form>
+</body>
+
+</html>
