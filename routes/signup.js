@@ -29,7 +29,7 @@ router.post('/', function (req, res, next) {
         knex("users")
           .insert({name: username, password: password})
           .then(function () {
-            res.redirect("/");
+            res.redirect("/tohelpuser");
           })
           .catch(function (err) {
             console.error(err);
