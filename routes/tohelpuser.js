@@ -16,7 +16,7 @@ router.post('/', function (req, res, next) {
     let classification=req.body.classification;
     console.log(mylng+mylat+contents)
     knex("tasks")
-        .insert({ lat: mylat, lng: mylng,contents:contents,class:classification})
+        .insert({ lat: mylat, lng: mylng,content:contents,class:classification})
         .then(function () {
             res.redirect('/tohelpuser');
         })
