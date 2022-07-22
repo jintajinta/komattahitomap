@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
     })
       .select("*")
       .then(function (results) {
-        res.render('index', {
+        res.render('tohelpuser', {
           title: '助けられる人用ページ',
           todos: results,
           isAuth: isAuth,
@@ -18,7 +18,7 @@ router.get('/', function (req, res, next) {
       })
       .catch(function (err) {
         console.error(err);
-        res.render('index', {
+        res.render('tohelpuser', {
           title: '助けられる人用ページ',
           isAuth: isAuth,
         });
