@@ -5,14 +5,14 @@ const knex = require('../db/knex');
 router.post('/', function (req, res, next) {
     let pingid = req.body.pingid;
     console.log(pingid)
-    knex("position_test")
+    knex("tasks")
         .where({ id: pingid, })
         .del().then(function () {
-            res.redirect('/map');
+            res.redirect('/helpuser');
         })
         .catch(function (err) {
             console.error(err);
-            res.redirect('/map');
+            res.redirect('/helpuser');
         });;
 });
 

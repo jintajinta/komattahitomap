@@ -3,6 +3,8 @@ const router = express.Router();
 const knex = require('../db/knex');
 
 router.get('/', function (req, res, next) {
+  const userId = req.session.userid;
+  const isAuth = Boolean(userId);
     knex("tasks")
     .select("*")
     .then(function (results) {
@@ -11,13 +13,15 @@ router.get('/', function (req, res, next) {
         {
             title: '助ける人用ページ',
             tasks: results,
+            isAuth: isAuth,
         })
       })
       .catch(function (err) {
         console.error(err);
-        res.render("助ける人用ページ",
+        res.render("helpuser",
         {
-            title: 'Map',
+            title: '助ける人用ページ',
+            isAuth: isAuth,
         })
       });
 });

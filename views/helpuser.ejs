@@ -12,13 +12,22 @@
   <script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
   <script src='/js/helpusermap.js'></script>
 </head>
-<body onload="init()">
-    <div id="map" style="width:600px;height:600px"></div>
-    <input type="hidden" name="example" id="position" value=<%= JSON.stringify(tasks) %>>
 
-    <form name = "deleteform" action="/deleteposition" method="post">
-      <input type="number" id="pingid" name="pingid"/>
+<body onload="init()">
+  <% if(isAuth) { %>
+    <div id="map" style="width:600px;height:600px"></div>
+    <input type="hidden" name="example" id="tasks" value=<%=JSON.stringify(tasks) %>>
+    <form name="deleteform" action="/deleteposition" method="post">
+      <input type="hidden" id="pingid" name="pingid" />
     </form>
+    <a href="/tohelpuser">助けられる人用ページはこちら</a>
+    <a href="/logout">ログアウト</a>
+    <ul>
+      <% } else { %>
+        <h1>困った人マップにようこそ</h1>
+        <a href="/signin">ログインしてください</a>
+        <a href="/signup">アカウント登録はこちら</a>
+        <% } %>
 </body>
 
 </html>
