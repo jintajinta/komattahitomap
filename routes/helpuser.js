@@ -8,3 +8,4 @@ router.get('/', function (req, res, next) {
             title: '助ける人用ページ',
         })
 });
+module.exports = router;
