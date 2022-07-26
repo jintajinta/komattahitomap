@@ -1,11 +1,28 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #00B7FF;
+  background-color: #fbff00ee;
+  
+
+}
+a {
+  color: #0051ff;
+}
+.menu > li.menu__single {
+  position: relative;
 }
 
+li.menu__single ul.menu__second-level {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  background: #072A24;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+}
 
-
-a {
-  color: #00B7FF;
+li.menu__single:hover ul.menu__second-level {
+  top: 50px;
+  visibility: visible;
+  opacity: 1;
 }
