@@ -18,7 +18,7 @@
     latitude = position.coords.latitude;
     // 経度を取得し画面に表示
     longitude = position.coords.longitude;
-    document.getElementById("mylat").value = latitude;
+    document.getElementById("mylat").value = latitude;https:
     document.getElementById("mylng").value = longitude;
   };
   // 取得に失敗した場合の処理
@@ -33,6 +33,7 @@
     <% if(isAuth) { %>
       <div class="container">
         <div class="row">
+          <div class="col-md-6">
       <form action="/tohelpuser" method="post">
         分類:
         <select name="classification" required>
@@ -42,6 +43,7 @@
           <option value="道案内">道案内</option>
           <option value="その他">その他</option>
         </select>
+         
         内容:
         <input type="text" id="content" name="contents" required />
         <input type="hidden" id="mylat" name="mylat" />
