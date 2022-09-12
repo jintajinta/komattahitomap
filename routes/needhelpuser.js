@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
     })
         .select("*")
         .then(function (results) {
-            res.render('tohelpuser', {
+            res.render('needhelpuser', {
                 title: '助けられる人用ページ',
                 todos: results,
                 isAuth: isAuth,
@@ -18,7 +18,7 @@ router.get('/', function (req, res, next) {
         })
         .catch(function (err) {
             console.error(err);
-            res.render('tohelpuser', {
+            res.render('needhelpuser', {
                 title: '助けられる人用ページ',
                 isAuth: isAuth,
             });
@@ -35,11 +35,11 @@ router.post('/', function (req, res, next) {
     knex("tasks")
         .insert({ lat: mylat, lng: mylng, content: contents, class: classification, user_id: userId })
         .then(function () {
-            res.redirect('/tohelpuser');
+            res.redirect('/needhelpuser');
         })
         .catch(function (err) {
             console.error(err);
-            res.redirect('/tohelpuser');
+            res.redirect('/needhelpuser');
         });
 });
 module.exports = router;

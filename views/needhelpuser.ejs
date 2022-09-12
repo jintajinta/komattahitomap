@@ -34,7 +34,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-      <form action="/tohelpuser" method="post">
+      <form action="/needhelpuser" method="post">
         分類:
         <select name="classification" required>
           <option value="力仕事">力仕事</option>
@@ -56,7 +56,7 @@
       <ul>
         <% for(let todo of todos){ %>
           <li><span>
-            <form action="/tohelpuser" method="post">
+            <form action="/needhelpuser" method="post">
               <%= todo.content %><input type="submit" value="解決" />
               </form>
             </span></li>
