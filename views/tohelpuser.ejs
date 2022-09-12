@@ -38,7 +38,7 @@
           <option value="道案内">道案内</option>
           <option value="その他">その他</option>
         </select>
-        内容:
+        内容:                                                                                                                      
         <input type="text" id="content" name="contents" required />
         <input type="hidden" id="mylat" name="mylat" />
         <input type="hidden" id="mylng" name="mylng" />
@@ -50,6 +50,10 @@
         <% for(let todo of todos){ %>
           <li><span>
               <%= todo.content %>
+              <form action="/tohelpuser" method="post">
+              <%= todo.content %><input type="submit" value="完了" />
+              </form>
+            </span>>
             </span></li>
           <% } %>
       </ul>
