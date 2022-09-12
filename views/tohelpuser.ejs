@@ -56,8 +56,10 @@
       <ul>
         <% for(let todo of todos){ %>
           <li><span>
-              <%= todo.content %>
-            </span></li>
+            <form action="/tohelpuser" method="post">
+              <%= todo.content %><input type="submit" value="解決" />
+              </form>
+            </span>></li>
             
           <% } %>
       </ul>
