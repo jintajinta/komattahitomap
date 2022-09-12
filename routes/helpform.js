@@ -3,10 +3,10 @@ const router = express.Router();
 const knex = require('../db/knex');
 
 router.post('/', function (req, res, next) {
-    let pingid = req.body.pingid;
-    console.log(pingid)
+    let taskid = req.body.taskid;
+    console.log(taskid)
     knex("tasks")
-        .where({ id: pingid, })
+        .where({ id: taskid, })
         .del().then(function () {
             res.redirect('/helpuser');
         })

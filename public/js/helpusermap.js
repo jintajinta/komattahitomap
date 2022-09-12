@@ -13,7 +13,7 @@ function init() {
     }).addTo(map);
     let pingcontents = ""
     for (i = 0; i <= task.length - 1; i++) {
-        pingcontents = "内容:" + task[i].class + "<br>内容:" + task[i].content + "<br><input type = \"button\" value = \"解決\" onClick = \"deletepositon(" + task[i].id + ")\">"
+        pingcontents = "内容:" + task[i].class + "<br>内容:" + task[i].content + "<br><input type = \"button\" value = \"解決\" onClick = \"help_button_pressed(" + task[i].id + ")\">"
         L.marker([task[i].lat, task[i].lng]).addTo(map).bindPopup(pingcontents).openPopup();
     }
 
@@ -32,7 +32,7 @@ function init() {
     };
 }
 
-function deletepositon(id) {
-    document.getElementById("pingid").value = id;
-    document.deleteform.submit();
+function help_button_pressed(id) {
+    document.getElementById("taskid").value = id;
+    document.helpform.submit();
 }
