@@ -83,12 +83,6 @@
                     </tr>
                   </thead>
                   <tbody></tbody>
-                  <tr>
-                    <td>道に困っています </td>
-                    <td><a href="{% url 'showDetail' user.id %}" class="btn btn-outline-primary">解決</a> </td>
-                    <td><a href="{% url 'showDetail' user.id %}"
-                        class="btn btn-outline-primary text-danger btn-outline-danger">削除</a> </td>
-                  </tr>
                   <% for(let todo of todos){ %>
                   <tr>
                     <td><%= todo.content %> </td>
