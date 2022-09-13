@@ -40,7 +40,7 @@ app.use('/helpuser', require('./routes/helpuser'));
 app.use('/needhelpuser', require('./routes/needhelpuser'));
 app.use('/mypage', require('./routes/mypage'));
 app.use('/solvedform', require('./routes/solvedform'));
-
+app.use('/sh', require('./routes/sh'));
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
