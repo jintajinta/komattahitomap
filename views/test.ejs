@@ -79,7 +79,7 @@
                 <table class="table table-striped table table-bordered ">
                   <thead>
                     <tr>
-                      <th colspan="4">一覧</th>
+                      <th colspan="4">あなたの投稿した困りごと</th>
                     </tr>
                   </thead>
                   <tbody></tbody>
@@ -89,37 +89,18 @@
                     <td><a href="{% url 'showDetail' user.id %}"
                         class="btn btn-outline-primary text-danger btn-outline-danger">削除</a> </td>
                   </tr>
+                  <% for(let todo of todos){ %>
                   <tr>
-                    <td>水槽の水換え </td>
+                    <td><%= todo.content %> </td>
                     <td><a href="{% url 'showDetail' user.id %}" class="btn btn-outline-primary">解決</a> </td>
                     <td><a href="{% url 'showDetail' user.id %}"
                         class="btn btn-outline-primary text-danger btn-outline-danger">削除</a> </td>
                   </tr>
-                  <tr>
-                    <td>米運んで</td>
-                    <td><a href="{% url 'showDetail' user.id %}" class="btn btn-outline-primary">解決</a> </td>
-                    <td><a href="{% url 'showDetail' user.id %}"
-                        class="btn btn-outline-primary text-danger btn-outline-danger">削除</a> </td>
                   </tr>
+                  <% } %>
                   </tbody>
                 </table>
               </div>
-
-                あなたの投稿した困りごと
-                <ul>
-                    <% for(let todo of todos){ %>
-                        <li><span>
-                                <form action="/solvedform" method="post">
-                                    <%= todo.content %>
-                                        <input type="hidden" value="<%= todo.id %>" id="taskid">
-                                        <input type="submit" value="解決" />
-                                </form>
-                            </span></li>
-
-                        <% } %>
-                </ul>
-                <a href="/helpuser">助ける人用ページはこちら</a>
-                <a href="/logout">ログアウト</a>
 </body>
 
 
