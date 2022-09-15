@@ -87,9 +87,9 @@
                   <tr>
                     <td><%= task.content %> </td>
                     <% if(task.completed){ %>
-                        <td>タスク完了</td>
+                        <td><div>タスク完了</div>></td><td></td>
                     <% }else if(task.closed){ %>
-                        <td>タスク削除</td>
+                        <td><div>タスク削除</div></td><td></td>
                     <% }else{ %>
                     <td><form action="/solvedform" method="post"><button type="submit" class="btn btn-outline-primary">解決</a> <input type="hidden" id="taskid" name="taskid" value="<%= task.id %>"></form></td>
                     <td><form action="/deleteform" method="post"><button type="submit" class="btn btn-outline-primary text-danger btn-outline-danger">削除</a> <input type="hidden" id="taskid" name="taskid" value="<%= task.id %>"></form></td>
