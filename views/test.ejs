@@ -83,10 +83,10 @@
                     </tr>
                   </thead>
                   <tbody></tbody>
-                  <% for(let todo of todos){ %>
+                  <% for(let task of tasks){ %>
                   <tr>
-                    <td><%= todo.content %> </td>
-                    <td><form action="/solvedform"></form><button type="submit" class="btn btn-outline-primary">解決</a> </td>
+                    <td><%= task.content %> </td>
+                    <td><form action="/solvedform"><button type="submit" class="btn btn-outline-primary">解決</a> <button type="hidden" value="<%= task.id %>"></form></td>
                     <td><button type="submit" class="btn btn-outline-primary text-danger btn-outline-danger">削除</a> </td>
                   </tr>
                   </tr>

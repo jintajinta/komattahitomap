@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
         .then(function (results) {
             res.render('test', {
                 title: '助けられる人用ページ',
-                todos: results,
+                tasks: results,
                 isAuth: isAuth,
             });
         })

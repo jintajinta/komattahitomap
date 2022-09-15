@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
     .then(function (results) {
       res.render('index', {
         title: 'ToDo App',
-        todos: results,
+        tasks: results,
         isAuth: isAuth,
       });
     })
