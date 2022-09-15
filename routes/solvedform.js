@@ -5,7 +5,7 @@ const knex = require('../db/knex');
 router.post('/', function (req, res, next) {
     let taskid = req.body.taskid;
     console.log(taskid)
-    knex("tasks").where('id',1).
+    knex("tasks").where('id',parseInt(taskid)).
     update({
         completed:'t'
         })
