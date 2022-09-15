@@ -87,7 +87,7 @@
                   <tr>
                     <td><%= task.content %> </td>
                     <td><form action="/solvedform" method="post"><button type="submit" class="btn btn-outline-primary">解決</a> <input type="hidden" id="taskid" name="taskid" value="<%= task.id %>"></form></td>
-                    <td><button type="submit" class="btn btn-outline-primary text-danger btn-outline-danger">削除</a> </td>
+                    <td><form action="/deleteform" method="post"><button type="submit" class="btn btn-outline-primary text-danger btn-outline-danger">削除</a> <input type="hidden" id="taskid" name="taskid" value="<%= task.id %>"></form></td>
                   </tr>
                   </tr>
                   <% }%>

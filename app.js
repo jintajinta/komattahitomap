@@ -40,6 +40,7 @@ app.use('/helpuser', require('./routes/helpuser'));
 app.use('/needhelpuser', require('./routes/needhelpuser'));
 app.use('/mypage', require('./routes/mypage'));
 app.use('/solvedform', require('./routes/solvedform'));
+app.use('/deleteform', require('./routes/deleteform'));
 app.use('/sh', require('./routes/sh'));
 app.use('/test', require('./routes/test'));
 
