@@ -86,18 +86,99 @@
                   <% for(let task of tasks){ %>
                   <tr>
                     <td><%= task.content %> </td>
-                    <td><a href="{% url 'showDetail' user.id %}" class="btn btn-outline-primary">解決</a> </td>
-                    <td><a href="{% url 'showDetail' user.id %}"
-                        class="btn btn-outline-primary text-danger btn-outline-danger">削除</a> </td>
+                    <% if(task.completed){ %>
+                        <td>タスク完了</td>
+                    <% }else if(task.closed){ %>
+                        <td>タスク削除</td>
+                    <% }else{ %>
+                    <td><form action="/solvedform" method="post"><button type="submit" class="btn btn-outline-primary">解決</a> <input type="hidden" id="taskid" name="taskid" value="<%= task.id %>"></form></td>
+                    <td><form action="/deleteform" method="post"><button type="submit" class="btn btn-outline-primary text-danger btn-outline-danger">削除</a> <input type="hidden" id="taskid" name="taskid" value="<%= task.id %>"></form></td>
+                        <% }%>
                   </tr>
                   </tr>
-                  <% } %>
+                  <% }%>
                   </tbody>
                 </table>
               </div>
 </body>
 
 
+
+
+
+
+
+
+<script>
+    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    function successCallback(position) {
+        // 緯度を取得し画面に表示
+        latitude = position.coords.latitude;
+        // 経度を取得し画面に表示
+        longitude = position.coords.longitude;
+        document.getElementById("mylat").value = latitude; https:
+        document.getElementById("mylng").value = longitude;
+    };
+    // 取得に失敗した場合の処理
+    function errorCallback(error) {
+        console.log(error)
+        alert("位置情報が取得できませんでした");
+    };
+</script>
+
+<script src="./bootstrap/holder.min.js.ダウンロード"></script>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+
+        window.addEventListener('load', function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+<script src="./bootstrap/jquery-3.3.1.slim.min.js.ダウンロード"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script>
+    window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
+</script>
+<script src="./bootstrap/bootstrap.bundle.min.js.ダウンロード"></script>
+<script src="./bootstrap/anchor.min.js.ダウンロード"></script>
+<script src="./bootstrap/clipboard.min.js.ダウンロード"></script>
+<script src="./bootstrap/bs-custom-file-input.min.js.ダウンロード"></script>
+<script src="./bootstrap/application.js.ダウンロード"></script>
+<script src="./bootstrap/search.js.ダウンロード"></script>
+<script src="./bootstrap/ie-emulation-modes-warning.js.ダウンロード"></script>
+
+<script src="./bootstrap/jquery-3.4.1.slim.min.js.ダウンロード"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script>
+    window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery-slim.min.js"><\/script>')
+</script>
+<script src="./bootstrap/bootstrap.bundle.min.js.ダウンロード"></script>
+<script src="./bootstrap/anchor.min.js.ダウンロード"></script>
+<script src="./bootstrap/clipboard.min.js.ダウンロード"></script>
+<script src="./bootstrap/bs-custom-file-input.min.js.ダウンロード"></script>
+<script src="./bootstrap/application.js.ダウンロード"></script>
+<script src="./bootstrap/search.js.ダウンロード"></script>
+<script src="./bootstrap/ie-emulation-modes-warning.js.ダウンロード"></script>
+
+</html>
 
 
 

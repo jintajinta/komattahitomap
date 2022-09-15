@@ -10,11 +10,11 @@ router.post('/', function (req, res, next) {
         completed:'t'
         })
         .then(function () {
-            res.redirect('/test');
+            res.redirect('/needhelpuser');
         })
         .catch(function (err) {
             console.error(err);
-            res.redirect('/test');
+            res.redirect('/needhelpuser');
         });
 });
 
