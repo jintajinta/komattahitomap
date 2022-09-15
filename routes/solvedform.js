@@ -7,7 +7,7 @@ router.post('/', function (req, res, next) {
     console.log(taskid)
     knex("tasks").where('id',taskid).
     update({
-        completed:true
+        completed:'t'
         })
         .then(function () {
             res.redirect('/needhelpuser');
