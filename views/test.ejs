@@ -83,7 +83,7 @@
                     </tr>
                   </thead>
                   <tbody></tbody>
-                  <%console.log(todo) for(let todo of todos){ console.log(todos)%>
+                  <% for(let todo of todos){ %>
                   <tr>
                     <td><%= todo.content %> </td>
                     <td><a href="{% url 'showDetail' user.id %}" class="btn btn-outline-primary">解決</a> </td>
