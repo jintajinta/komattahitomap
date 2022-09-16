@@ -1,26 +1,122 @@
-<!DOCTYPE html>
-<html>
+<!-- saved from url=(0051)https://getbootstrap.jp/docs/4.3/examples/checkout/ -->
+<html lang="ja">
 
 <head>
-  <meta charset='utf-8'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <title>
-    <%= title %>
-  </title>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>困った人マップ・ログイン画面</title>
+  <link rel="stylesheet" href="./Checkout example for Bootstrap · Bootstrap_files/bootstrap.min.css">
+  <link href="./Checkout example for Bootstrap · Bootstrap_files/form-validation.css" rel="stylesheet">
+  <link rel="stylesheet" href="./価格表示テンプレート for Bootstrap · Bootstrap_files/bootstrap.min.css">
+  <link href="./価格表示テンプレート for Bootstrap · Bootstrap_files/css" rel="stylesheet">
+  <link href="./価格表示テンプレート for Bootstrap · Bootstrap_files/pricing.css" rel="stylesheet">
+  <link href="./価格表示テンプレート for Bootstrap · Bootstrap_files/example.css" rel="stylesheet">
 </head>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <!-- <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5> -->
+  <h5 class="my-0 mr-md-auto font-weight-normal">困った人マップ</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <!-- <a class="p-2 text-dark" href="#">Features</a> -->
+    <a class="p-2 text-success" href="https://getbootstrap.jp/docs/4.4/examples/pricing/#">signup</a>
+    <!-- <a class="p-2 text-dark" href="#">Enterprise</a> -->
+    <a class="p-2 text-danger" href="https://getbootstrap.jp/docs/4.4/examples/pricing/#">logout</a>
 
-<body>
-  <%- include('./error_messages'); %>
-    <form action="/signin" method="post">
-      <label>ユーザ名</label>
-      <input required type="text" name="username" />
-      <br>
-      <label>パスワード</label>
-      <input required type="password" name="password" />
-      <br>
-      <input type="submit" value="Sign in" />
-    </form>
+    <!-- <a class="btn btn-outline-primary" href="#">Sign up</a> -->
+    <a class="p-2 text" href="https://getbootstrap.jp/docs/4.4/examples/pricing/#">signin</a>
+  </nav>
+</div>
+
+<body class="bg-light">
+  <a id="skippy" class="sr-only sr-only-focusable" href="https://getbootstrap.jp/docs/4.3/examples/checkout/#content">
+    <div class="container">
+      <span class="skiplink-text">Skip to main content</span>
+    </div>
+  </a>
+  <div class="container">
+    <div class="py- text-center">
+      <h2>困った人マップ</h2>
+      <div class="mb-5"></div>
+      <div class="col-auto">
+
+        </ul>
+
+        <div class="mb-1  text-left">
+          <form action="/signin" method="post">
+            <div class="row justify-content-center">
+              <div class="col-7">
+                <input type="text" class="form-control" name="username" placeholder="ユーザー名" required="">
+                <input type="password" class="form-control" name="password" placeholder="パスワード" required="">
+
+              </div>
+              <div class="container bg-light">
+                <div class="text-center">
+                  <input type="submit" value="Sign in" class="btn btn-info">
+                </div>
+
+              </div>
+              <tbody></tbody>
+              </tbody>
+              </table>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script src="./Checkout example for Bootstrap · Bootstrap_files/holder.min.js.ダウンロード"></script>
+  <script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict';
+
+      window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+
+  <script src="./Checkout example for Bootstrap · Bootstrap_files/jquery-3.3.1.slim.min.js.ダウンロード"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script>
+    window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')
+  </script>
+  <script src="./Checkout example for Bootstrap · Bootstrap_files/bootstrap.bundle.min.js.ダウンロード"></script>
+  <script src="./Checkout example for Bootstrap · Bootstrap_files/anchor.min.js.ダウンロード"></script>
+  <script src="./Checkout example for Bootstrap · Bootstrap_files/clipboard.min.js.ダウンロード"></script>
+  <script src="./Checkout example for Bootstrap · Bootstrap_files/bs-custom-file-input.min.js.ダウンロード"></script>
+  <script src="./Checkout example for Bootstrap · Bootstrap_files/application.js.ダウンロード"></script>
+  <script src="./Checkout example for Bootstrap · Bootstrap_files/search.js.ダウンロード"></script>
+  <script src="./Checkout example for Bootstrap · Bootstrap_files/ie-emulation-modes-warning.js.ダウンロード"></script>
+
+  <script src="./価格表示テンプレート for Bootstrap · Bootstrap_files/jquery-3.4.1.slim.min.js.ダウンロード"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script>
+    window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery-slim.min.js"><\/script>')
+  </script>
+  <script src="./価格表示テンプレート for Bootstrap · Bootstrap_files/bootstrap.bundle.min.js.ダウンロード"></script>
+  <script src="./価格表示テンプレート for Bootstrap · Bootstrap_files/anchor.min.js.ダウンロード"></script>
+  <script src="./価格表示テンプレート for Bootstrap · Bootstrap_files/clipboard.min.js.ダウンロード"></script>
+  <script src="./価格表示テンプレート for Bootstrap · Bootstrap_files/bs-custom-file-input.min.js.ダウンロード"></script>
+  <script src="./価格表示テンプレート for Bootstrap · Bootstrap_files/application.js.ダウンロード"></script>
+  <script src="./価格表示テンプレート for Bootstrap · Bootstrap_files/search.js.ダウンロード"></script>
+  <script src="./価格表示テンプレート for Bootstrap · Bootstrap_files/ie-emulation-modes-warning.js.ダウンロード"></script>
+
 </body>
 
 </html>
