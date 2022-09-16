@@ -11,6 +11,8 @@ router.get('/', function (req, res, next) {
   })
     .select("*")
     .then(function (results) {
+      console.log('--------------------------------------------------------------------------------------')
+      console.log(results.class)
       if(isAuth){
         if(results.class==0){
           res.redirect('/helpuser');
