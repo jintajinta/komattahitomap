@@ -10,18 +10,26 @@ router.get('/', function (req, res, next) {
     })
         .select("*")
         .then(function (results) {
-            res.render('needhelpuser', {
-                title: '助けられる人用ページ',
-                tasks: results,
-                isAuth: isAuth,
-            });
+            if (isAuth) {
+                res.render('needhelpuser', {
+                    title: '助けられる人用ページ',
+                    tasks: results,
+                    isAuth: isAuth,
+                });
+            } else {
+                res.redirect('/');
+            }
         })
         .catch(function (err) {
-            console.error(err);
-            res.render('needhelpuser', {
-                title: '助けられる人用ページ',
-                isAuth: isAuth,
-            });
+            if (isAuth) {
+                console.error(err);
+                res.render('needhelpuser', {
+                    title: '助けられる人用ページ',
+                    isAuth: isAuth,
+                });
+            } else {
+                res.redirect('/');
+            }
         });
 });
 
@@ -36,7 +44,7 @@ router.post('/', function (req, res, next) {
 
     console.log(mylng + mylat + contents)
     knex("tasks")
-        .insert({ lat: mylat, lng: mylng, content: contents, class: classification, user_id: userId , location_details: location_details , appearance : appearance})
+        .insert({ lat: mylat, lng: mylng, content: contents, class: classification, user_id: userId, location_details: location_details, appearance: appearance })
         .then(function () {
             res.redirect('/needhelpuser');
         })

@@ -7,13 +7,13 @@ router.post('/', function (req, res, next) {
     const userId = req.session.userid;
     console.log(taskid)
     knex("helps")
-        .insert({ user_id: userId, task_id: taskid})
+        .insert({ user_id: userId, task_id: taskid })
         .then(function () {
-            res.redirect('/helpuser');
+            res.redirect('/');
         })
         .catch(function (err) {
             console.error(err);
-            res.redirect('/helpuser');
+            res.redirect('/');
         });
 });
 
