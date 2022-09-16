@@ -12,9 +12,9 @@ router.get('/', function (req, res, next) {
     .select("*")
     .then(function (results) {
       console.log('--------------------------------------------------------------------------------------')
-      console.log(results.class)
+      console.log(results[0].class)
       if(isAuth){
-        if(results.class==0){
+        if(results[0].class==0){
           res.redirect('/helpuser');
         }else{
           res.redirect('/needhelpuser');
