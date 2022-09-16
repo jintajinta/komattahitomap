@@ -26,7 +26,7 @@ router.post('/', function (req, res, next) {
         });
       } else if (password == results[0].password) {
         req.session.userid = results[0].id;
-        res.redirect('/tohelpuser');
+        res.redirect('/needhelpuser');
       } else {
         res.render("signin", {
           title: "Sign in",

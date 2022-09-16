@@ -14,6 +14,7 @@ router.post('/', function (req, res, next) {
   const username = req.body.username;
   const password = req.body.password;
   const repassword = req.body.repassword;
+  const classification = req.body.class;
 
   knex("users")
     .where({name: username})
@@ -27,9 +28,9 @@ router.post('/', function (req, res, next) {
         })
       } else if (password === repassword) {
         knex("users")
-          .insert({name: username, password: password})
+          .insert({name: username, password: password ,class:classification})
           .then(function () {
-            res.redirect("/tohelpuser");
+            res.redirect("/needhelpuser");
           })
           .catch(function (err) {
             console.error(err);

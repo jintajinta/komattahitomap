@@ -10,15 +10,15 @@ router.get('/', function (req, res, next) {
     })
         .select("*")
         .then(function (results) {
-            res.render('tohelpuser', {
+            res.render('needhelpuser', {
                 title: '助けられる人用ページ',
-                todos: results,
+                tasks: results,
                 isAuth: isAuth,
             });
         })
         .catch(function (err) {
             console.error(err);
-            res.render('tohelpuser', {
+            res.render('needhelpuser', {
                 title: '助けられる人用ページ',
                 isAuth: isAuth,
             });
@@ -30,16 +30,19 @@ router.post('/', function (req, res, next) {
     let mylat = req.body.mylat;
     let contents = req.body.contents;
     let classification = req.body.classification;
+    let location_details = req.body.location_details;
+    let appearance = req.body.appearance;
     const userId = req.session.userid;
+
     console.log(mylng + mylat + contents)
     knex("tasks")
-        .insert({ lat: mylat, lng: mylng, content: contents, class: classification, user_id: userId })
+        .insert({ lat: mylat, lng: mylng, content: contents, class: classification, user_id: userId , location_details: location_details , appearance : appearance})
         .then(function () {
-            res.redirect('/tohelpuser');
+            res.redirect('/needhelpuser');
         })
         .catch(function (err) {
             console.error(err);
-            res.redirect('/tohelpuser');
+            res.redirect('/needhelpuser');
         });
 });
 module.exports = router;
