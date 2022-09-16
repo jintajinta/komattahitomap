@@ -6,8 +6,8 @@ const knex = require('../db/knex');
 router.get('/', function (req, res, next) {
   const userId = req.session.userid;
   const isAuth = Boolean(userId);
-  knex("tasks").where({
-    user_id: userId,
+  knex("users").where({
+    id: userId,
   })
     .select("*")
     .then(function (results) {
