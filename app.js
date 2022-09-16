@@ -29,7 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // router
-app.use('/', require('./routes/needhelpuser'));
+app.use('/', require('./routes/index'));
 app.use('/signup', require('./routes/signup'));
 app.use('/map', require('./routes/map'));
 app.use('/signin', require('./routes/signin'));
