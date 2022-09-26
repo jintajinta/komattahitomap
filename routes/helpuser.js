@@ -9,7 +9,6 @@ router.get('/', function (req, res, next) {
     knex("tasks")
     .select("*")
     .then(function (results) {
-        console.log(results)
         if(isAuth){
         res.render("helpuser",
         {

@@ -2,9 +2,7 @@ let latitude
 let longitude
 function init() {
     let position_data = document.getElementById("position").value;
-    console.log(position_data);
     let position=JSON.parse(position_data);
-    console.log(position)
     var map = L.map('map');
     map.setView([36.00, 137], 10);
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);

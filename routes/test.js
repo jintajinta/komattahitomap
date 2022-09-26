@@ -33,8 +33,6 @@ router.post('/', function (req, res, next) {
     let location_details = req.body.location_details;
     let appearance = req.body.appearance;
     const userId = req.session.userid;
-
-    console.log(mylng + mylat + contents)
     knex("tasks")
         .insert({ lat: mylat, lng: mylng, content: contents, class: classification, user_id: userId , location_details: location_details , appearance : appearance})
         .then(function () {
