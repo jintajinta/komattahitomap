@@ -6,6 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <%= tasks %> 
+    <% for(let task of tasks){ %>
+        <tr>
+          <td><%= task.content %> </td>
+        </tr>
+        <% }%>
 </body>
 </html>
