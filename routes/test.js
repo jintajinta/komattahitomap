@@ -10,9 +10,14 @@ router.get('/', function (req, res, next) {
     })
         .select("*")
         .then(function (results) {
-            knex("users")
-            .select("*")
-            .then(function (resultusers) {
+            knex.select('contents')
+            .table('helps')
+            .innerJoin(
+                'tasks',
+                'helps.task_id',
+                '=',
+                'tasks.id'
+            ).then(function (resultusers) {
                 res.render('test', {
                     title: '助けられる人用ページ',
                     users: resultusers,
@@ -35,6 +40,8 @@ router.get('/', function (req, res, next) {
                 isAuth: isAuth,
             });
         });
+
     
+
 });
 module.exports = router;
