@@ -29,6 +29,7 @@ router.get('/', function (req, res, next) {
                 console.error(err);
                 res.render('test', {
                     title: '助けられる人用ページ',
+                    tasks: results,
                     isAuth: isAuth,
                 });
             });
