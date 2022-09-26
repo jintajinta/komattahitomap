@@ -13,7 +13,7 @@ function init() {
     }).addTo(map);
     let pingcontents = ""
     for (i = 0; i <= task.length - 1; i++) {
-        pingcontents = "内容:" + task[i].class + "<br>内容:" + task[i].content + "<br><input type = \"button\" value = \"助けに行く\" onClick = \"help_button_pressed(" + task[i].id + ")\">"
+        pingcontents = "分類:" + task[i].class + "<br>内容:" + task[i].content + "<br>位置の詳細:" + task[i].location_details + "<br>投稿者の見た目:" + task[i].appearance + "<br><input type = \"button\" value = \"助けに行く\" onClick = \"help_button_pressed(" + task[i].id + ")\">"
         L.marker([task[i].lat, task[i].lng]).addTo(map).bindPopup(pingcontents).openPopup();
     }
 
@@ -23,7 +23,6 @@ function init() {
         // 経度を取得し画面に表示
         longitude = position.coords.longitude;
         map.setView([latitude, longitude], 10);
-        L.marker([latitude, longitude]).addTo(map).bindPopup("現在地").openPopup();
     };
     // 取得に失敗した場合の処理
     function errorCallback(error) {
