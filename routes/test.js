@@ -10,10 +10,22 @@ router.get('/', function (req, res, next) {
     })
         .select("*")
         .then(function (results) {
-            res.render('test', {
-                title: '助けられる人用ページ',
-                tasks: results,
-                isAuth: isAuth,
+            knex("users")
+            .select("*")
+            .then(function (resultusers) {
+                res.render('test', {
+                    title: '助けられる人用ページ',
+                    users: resultusers,
+                    tasks: results,
+                    isAuth: isAuth,
+                });
+            })
+            .catch(function (err) {
+                console.error(err);
+                res.render('test', {
+                    title: '助けられる人用ページ',
+                    isAuth: isAuth,
+                });
             });
         })
         .catch(function (err) {
@@ -23,5 +35,6 @@ router.get('/', function (req, res, next) {
                 isAuth: isAuth,
             });
         });
+    
 });
 module.exports = router;
