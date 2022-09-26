@@ -24,23 +24,4 @@ router.get('/', function (req, res, next) {
             });
         });
 });
-
-router.post('/', function (req, res, next) {
-    let mylng = req.body.mylng;
-    let mylat = req.body.mylat;
-    let contents = req.body.contents;
-    let classification = req.body.classification;
-    let location_details = req.body.location_details;
-    let appearance = req.body.appearance;
-    const userId = req.session.userid;
-    knex("tasks")
-        .insert({ lat: mylat, lng: mylng, content: contents, class: classification, user_id: userId , location_details: location_details , appearance : appearance})
-        .then(function () {
-            res.redirect('/test');
-        })
-        .catch(function (err) {
-            console.error(err);
-            res.redirect('/test');
-        });
-});
 module.exports = router;
