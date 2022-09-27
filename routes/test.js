@@ -13,7 +13,12 @@ router.get('/', function (req, res, next) {
         'tasks.id', 
         '=', 
         'helps.task_id'
-      ).then(function (result) {
+      ).where(
+        user_id=userId ,
+        canceled=false ,
+        completed=false
+      )
+      .then(function (result) {
         res.render("test", {
             results:result
           });
