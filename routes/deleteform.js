@@ -6,7 +6,7 @@ router.post('/', function (req, res, next) {
     let taskid = req.body.taskid;
     knex("tasks").where('id',parseInt(taskid)).
     update({
-        closed:'t'
+        canceled:'t'
         })
         .then(function () {
             res.redirect('/');
