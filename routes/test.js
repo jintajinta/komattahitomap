@@ -7,14 +7,12 @@ router.get('/', function (req, res, next) {
     const isAuth = Boolean(userId);
     knex
     .select('*')
-    .from('helps')
+    .from('tasks')
     .innerJoin(
         'tasks', 
         'tasks.id', 
         '=', 
         'helps.task_id'
-      ).where(
-        post_user_id,userId
       )
       .then(function (result) {
         res.render("test", {
