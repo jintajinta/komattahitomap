@@ -14,9 +14,7 @@ router.get('/', function (req, res, next) {
         '=', 
         'helps.task_id'
       ).where(
-        user_id=userId ,
-        canceled=false ,
-        completed=false
+        user_id,userId
       )
       .then(function (result) {
         res.render("test", {
