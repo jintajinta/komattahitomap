@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
         '=', 
         'helps.task_id'
       ).where(
-        user_id,userId
+        post_user_id,userId
       )
       .then(function (result) {
         res.render("test", {
