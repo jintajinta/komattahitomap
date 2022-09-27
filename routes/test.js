@@ -15,7 +15,7 @@ router.get('/', function (req, res, next) {
       .select('*')
       .where
       (
-        post_user_id,userId
+        helps.user_id,userId
       )
       .then(function (result) {
         res.render("test", {
