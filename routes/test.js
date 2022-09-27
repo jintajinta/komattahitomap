@@ -5,15 +5,22 @@ const knex = require('../db/knex');
 router.get('/', function (req, res, next) {
     const userId = req.session.userid;
     const isAuth = Boolean(userId);
-    knex('helps')
-    .select('*').then(function (results) {
-    res.render('test', {
-        results: results,
-    });
+    knex
+    .select('*')
+    .from('helps')
+    .innerJoin(
+        'tasks', 
+        'tasks.id', 
+        '=', 
+        'helps.user_id'
+      ).then(function (result) {
+        res.render("test", {
+            results:result
+          });
 })
 .catch(function (err) {
-    console.error(err);
-    res.redirect('/map');
+    res.render("test", {
+      });
 });
 
 });
