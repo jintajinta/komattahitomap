@@ -13,8 +13,6 @@ router.get('/', function (req, res, next) {
         'tasks.id', 
         '=', 
         'helps.task_id'
-      ).where(
-        tasks.post_user_id,userId
       )
       .then(function (result) {
         res.render("test", {
