@@ -6,7 +6,7 @@ router.get('/', function (req, res, next) {
     const userId = req.session.userid;
     const isAuth = Boolean(userId);
     knex("tasks").where({
-        user_id: userId,
+        post_user_id: userId,
     })
         .select("*")
         .then(function (results) {
@@ -43,7 +43,7 @@ router.post('/', function (req, res, next) {
     const userId = req.session.userid;
 
     knex("tasks")
-        .insert({ lat: mylat, lng: mylng, content: contents, class: classification, user_id: userId, location_details: location_details, appearance: appearance })
+        .insert({ lat: mylat, lng: mylng, content: contents, class: classification, post_user_id: userId, location_details: location_details, appearance: appearance })
         .then(function () {
             res.redirect('/needhelpuser');
         })
