@@ -6,14 +6,13 @@ router.get('/', function (req, res, next) {
     const userId = req.session.userid;
     const isAuth = Boolean(userId);
     knex
-    .select('*')
     .from('helps')
     .innerJoin(
         'tasks', 
-        'tasks.id', 
-        '=', 
+        'helps.id', 
         'helps.task_id'
       )
+      .select('*')
       .then(function (result) {
         res.render("test", {
             results:result
