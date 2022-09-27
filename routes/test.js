@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
         'tasks', 
         'tasks.id', 
         '=', 
-        'helps.user_id'
+        'helps.task_id'
       ).then(function (result) {
         res.render("test", {
             results:result
