@@ -6,12 +6,7 @@ router.get('/', function (req, res, next) {
     const userId = req.session.userid;
     const isAuth = Boolean(userId);
     knex('helps')
-    .select('*')
-
-});
-
-
-.then(function (results) {
+    .select('*').then(function (results) {
     res.render('test', {
         results: results,
     });
@@ -20,5 +15,10 @@ router.get('/', function (req, res, next) {
     console.error(err);
     res.redirect('/map');
 });
+
+});
+
+
+
 
 module.exports = router;
