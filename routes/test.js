@@ -13,6 +13,10 @@ router.get('/', function (req, res, next) {
         'helps.task_id'
       )
       .select('*')
+      .where
+      (
+        post_user_id,userId
+      )
       .then(function (result) {
         res.render("test", {
             results:result
