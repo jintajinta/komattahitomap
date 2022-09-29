@@ -13,6 +13,9 @@ router.get('/', function (req, res, next) {
         'helps.task_id'
       )
       .select('*')
+      .where({
+        user_id: userId,
+      })
       .then(function (result) {
         res.render("test", {
             results:result
