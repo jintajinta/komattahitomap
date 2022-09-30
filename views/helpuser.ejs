@@ -47,7 +47,7 @@
           <th colspan="2">あなたが向かっているタスク</th>
         </tr>
       </thead>
-      <% for(let help of helps){ if(help.completed==0&&help.canceled==0){ %>
+      <% for(let help of helps.rows){ if(help.completed==0&&help.canceled==0){ %>
         <tbody>
           <th style="width: 50%" class="text-center header">
             <%= help.content %>
@@ -61,7 +61,7 @@
       <tr>
         <th colspan="2">あなたが今までにしたタスク</th>
       </tr>
-      <% for(let help of helps){ if(help.completed==1&&help.canceled==0){ %>
+      <% for(let help of helps.rows){ if(help.completed==1&&help.canceled==0){ %>
       <tbody>
         <th style="width: 100%" class="text-center header"> <%= help.content %></th>
       </tbody>

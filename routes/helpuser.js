@@ -11,31 +11,22 @@ router.get('/', function (req, res, next) {
     .then(function (taskresults) {
       if (isAuth) {
         knex
-          .from('helps')
-          .innerJoin(
-            'tasks',
-            'helps.id',
-            'helps.task_id'
-          )
-          .select('*')
-          .where({
-            user_id: userId,
-          })
+          .raw('select * from helps inner join tasks on helps.task_id = tasks.id where user_id=?', [userId])
           .then(function (helpresults) {
             res.render("helpuser",
-            {
-              title: '助ける人用ページ',
-              tasks: taskresults,
-              helps: helpresults,
-              isAuth: isAuth,
-            })
+              {
+                title: '助ける人用ページ',
+                tasks: taskresults,
+                helps: helpresults,
+                isAuth: isAuth,
+              })
           })
           .catch(function (err) {
             res.render("helpuser",
-            {
-              title: '助ける人用ページ',
-              isAuth: isAuth,
-            })
+              {
+                title: '助ける人用ページ',
+                isAuth: isAuth,
+              })
           });
       } else {
         res.redirect('/');
