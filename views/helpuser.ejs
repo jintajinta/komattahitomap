@@ -70,7 +70,7 @@
   </div>
 
 
-
+  <input type="hidden" id="helps" value=<%=JSON.stringify(helps) %>>
   <input type="hidden" name="example" id="tasks" value=<%=JSON.stringify(tasks) %>>
   <form name="helpform" action="/helpform" method="post">
     <input type="hidden" id="taskid" name="taskid" />
@@ -111,6 +111,11 @@
       });
     }, false);
   })();
+</script>
+
+<script>
+  let helps_data = document.getElementById("helps").value;
+  console.log(helps_data)
 </script>
 
 <script src="./bootstrap/jquery-3.3.1.slim.min.js.ダウンロード"
