@@ -47,39 +47,25 @@
           <th colspan="2">あなたが向かっているタスク</th>
         </tr>
       </thead>
-
-      <tbody>
-        <!-- <th style="width: 50%"class="text-center header">a </th> -->
-        <!-- <th><input type="text" class="form-control" id="content" placeholder="（例）道に迷っています" required=""></th> -->
-        <th style="width: 50%" class="text-center header">aaa</th>
-        <th style="width: 50%"><input type="submit" id="passwd1" class="form-control"></th>
-      </tbody>
-      <tbody>
-        <th style="width: 50%" class="text-center header">bbb</th>
-        <th style="width: 50%"><input type="submit" id="passwd1" class="form-control"></th>
-      </tbody>
-      <tbody>
-        <th style="width: 50%" class="text-center header">ccc</th>
-        <th style="width: 50%"><input type="submit" id="passwd1" class="form-control"></th>
-      </tbody>
+      <% for(let help of helps){ if(help.completed==0&&help.canceled==0){ %>
+        <tbody>
+          <th style="width: 50%" class="text-center header">
+            <%= help.content %>
+          </th>
+          <th style="width: 50%"><input type="submit" id="passwd1" class="form-control"></th>
+        </tbody>
+        <% }}%>
     </table>
 
     <table class="table table-striped table table-bordered">
       <tr>
         <th colspan="2">あなたが今までにしたタスク</th>
       </tr>
+      <% for(let help of helps){ if(help.completed==1&&help.canceled==0){ %>
       <tbody>
-        <th style="width: 100%" class="text-center header">aaa</th>
+        <th style="width: 100%" class="text-center header"> <%= help.content %></th>
       </tbody>
-      <tbody>
-        <th style="width: 100%" class="text-center header">bbb</th>
-      </tbody>
-      <tbody>
-        <th style="width: 100%" class="text-center header">ccc</th>
-      </tbody>
-      <tbody>
-        <th style="width: 100%" class="text-center header">ddd</th>
-      </tbody>
+      <% }}%>
     </table>
   </div>
   <input type="text" name="example" id="results" value=<%=JSON.stringify(helps) %>>
