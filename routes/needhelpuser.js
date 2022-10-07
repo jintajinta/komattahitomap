@@ -35,6 +35,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
+    dayjs.tz.setDefault('Asia/Tokyo');
     let mylng = req.body.mylng;
     let mylat = req.body.mylat;
     let contents = req.body.contents;
@@ -43,6 +44,7 @@ router.post('/', function (req, res, next) {
     let appearance = req.body.appearance;
     const userId = req.session.userid;
     let createdAt = dayjs().format('YYYY-MM-DD HH:mm:ss');
+
     knex("tasks")
         .insert({ lat: mylat, lng: mylng, content: contents, class: classification, post_user_id: userId, location_details: location_details, appearance: appearance ,ts:createdAt})
         .then(function () {
