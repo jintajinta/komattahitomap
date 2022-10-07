@@ -8,7 +8,7 @@ router.post('/', function (req, res, next) {
     const userId = req.session.userid;
     let helpAt = dayjs().format('YYYY-MM-DD HH:mm:ss');
     knex("helps")
-        .insert({ user_id: userId, task_id: taskid ,help_ts:helpAt})
+        .insert({ user_id: userId, task_id: taskid ,help_dt:helpAt})
         .then(function () {
             res.redirect('/');
         })
