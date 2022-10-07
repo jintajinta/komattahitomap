@@ -44,7 +44,7 @@ router.post('/', function (req, res, next) {
     const userId = req.session.userid;
     let createdAt = dayjs().format('YYYY-MM-DD HH:mm:ss');
     knex("tasks")
-        .insert({ lat: mylat, lng: mylng, content: contents, class: classification, post_user_id: userId, location_details: location_details, appearance: appearance })
+        .insert({ lat: mylat, lng: mylng, content: contents, class: classification, post_user_id: userId, location_details: location_details, appearance: appearance ,ts:createdAt})
         .then(function () {
             res.redirect('/needhelpuser');
         })
