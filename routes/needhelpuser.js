@@ -40,7 +40,6 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-    dayjs.tz.setDefault('Asia/Tokyo');
     let mylng = req.body.mylng;
     let mylat = req.body.mylat;
     let contents = req.body.contents;
