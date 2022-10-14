@@ -8,13 +8,11 @@
 </head>
 
 <body>
-  <input type="text" name="example" id="results" value=<%=JSON.stringify(results.rows) %>>
-  <div id="str"></div>
+  <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-text="hello" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 </body>
 <script>
-  let results_data = document.getElementById("results").value;
-  document.getElementById('str').innerHTML=results_data
-  console.log(results_data)
+
 </script>
 
 </html>
