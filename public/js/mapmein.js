@@ -28,14 +28,14 @@ function init() {
         map.setView([latitude, longitude], 10);
         L.marker([latitude, longitude]).addTo(map).bindPopup("現在地").openPopup();
         const url = new URL('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress');
-        url.searchParams.set('lat', coords.latitude);
-        url.searchParams.set('lon', coords.longitude);
+        url.searchParams.set('lat', position.coords.latitude);
+        url.searchParams.set('lon', position.coords.longitude);
         const res = await fetch(url.toString());
         const json = await res.json();
         const data = json.results;
         const muniData = GSI.MUNI_ARRAY[json.results.muniCd];
         const [prefCode, pref, muniCode, city] = muniData.split(',');
-        console.log(`aaa`);
+        console.log(json)
     };
     // 取得に失敗した場合の処理
     function errorCallback(error) {
@@ -50,4 +50,4 @@ function deletepositon(id) {
     document.getElementById("pingid").value = id;
     document.deleteform.submit();
 }
-<script src="https://maps.gsi.go.jp/js/muni.js"></script>
+
