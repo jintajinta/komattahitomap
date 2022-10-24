@@ -31,7 +31,9 @@ function init() {
         url.searchParams.set('lon', longitude);
         const res=await fetch(url);
         const json = await res.json();
-        console.log(json)
+        const muniData = GSI.MUNI_ARRAY[json.results.muniCd];
+        const [prefCode, pref, muniCode, city] = muniData.split(',');
+        console.log(`${pref} ${city}`)
     };
     // 取得に失敗した場合の処理
     function errorCallback(error) {
