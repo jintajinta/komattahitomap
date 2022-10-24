@@ -35,7 +35,7 @@ function init() {
         const muniData = GSI.MUNI_ARRAY[json.results.muniCd];
         const [prefCode, pref, muniCode, city] = muniData.split(',');
         let tweettext=`${pref} ${city} ${data.lv01Nm}`+"でボランティア活動中！";
-        document.getElementById("test").value=tweettext;
+        document.getElementById("Tweet").data-text=tweettext;
     };
     // 取得に失敗した場合の処理
     function errorCallback(error) {
