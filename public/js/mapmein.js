@@ -23,7 +23,6 @@ function init() {
     }
 
     async function successCallback(position) {
-        let GSI = {};
         // 緯度を取得し画面に表示
         latitude = position.coords.latitude;
         document.getElementById("latitude").innerHTML = latitude;
