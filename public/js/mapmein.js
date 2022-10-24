@@ -17,18 +17,19 @@ function init() {
     }
 
     function successCallback(position) {
-        // 緯度を取得し画面に表示
         latitude = position.coords.latitude;
         document.getElementById("latitude").innerHTML = latitude;
-        // 経度を取得し画面に表示
         longitude = position.coords.longitude;
         document.getElementById("longitude").innerHTML = longitude;
         document.getElementById("mylat").value = latitude;
         document.getElementById("mylng").value = longitude;
         map.setView([latitude, longitude], 10);
         L.marker([latitude, longitude]).addTo(map).bindPopup("現在地").openPopup();
+        const url = new URL('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress');
+        url.searchParams.set('lat', latitude);
+        url.searchParams.set('lon', longitude);
+        fetch(url).then((response) => response.json()).then((data) => console.log(data));
     };
-    // 取得に失敗した場合の処理
     function errorCallback(error) {
         console.log(error)
         alert("位置情報が取得できませんでした");
