@@ -21,15 +21,17 @@ function init() {
     }
 
     function successCallback(position) {
-        // 緯度を取得し画面に表示
+        let json
         latitude = position.coords.latitude;
-        // 経度を取得し画面に表示
         longitude = position.coords.longitude;
         map.setView([latitude, longitude], 10);
         let url = new URL('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress');
         url.searchParams.set('lat', latitude);
         url.searchParams.set('lon', longitude);
-        fetch(url).then((response) => response.json()).then((data) => console.log(data));
+        fetch(url).then((response) => {json=response.json();}).then((data) => console.log(data));
+        const muniData = GSI.MUNI_ARRAY[json.results.muniCd];
+        const [prefCode, pref, muniCode, city] = muniData.split(',');
+        console.log(`${pref} ${city} ${data.lv01Nm}`);
     };
     // 取得に失敗した場合の処理
     function errorCallback(error) {
