@@ -35,7 +35,7 @@ function init() {
         const data = json.results;
         const muniData = GSI.MUNI_ARRAY[json.results.muniCd];
         const [prefCode, pref, muniCode, city] = muniData.split(',');
-        console.log(`${pref} ${city} ${data.lv01Nm}`);
+        console.log(`aaa`);
     };
     // 取得に失敗した場合の処理
     function errorCallback(error) {
