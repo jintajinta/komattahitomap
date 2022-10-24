@@ -12,7 +12,17 @@ function init() {
     let url = new URL('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress');
     url.searchParams.set('lat', latitude);
     url.searchParams.set('lon', longitude);
-    fetch(url).then((response) => response.json()).then((data) => console.log(data));
+    const res = fetch(url.toString());
+    const json = res.json();
+    const data = json.results;
+
+    // 変換表から都道府県などを取得
+    const muniData = GSI.MUNI_ARRAY[json.results.muniCd];
+    // 都道府県コード,都道府県名,市区町村コード,市区町村名 に分割
+    const [prefCode, pref, muniCode, city] = muniData.split(',');
+
+    // 画面に反映
+    console.log(json)
     L.tileLayer('https://c.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
     }).addTo(map);
