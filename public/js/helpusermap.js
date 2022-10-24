@@ -7,7 +7,9 @@ function init() {
     var map = L.map('map');
     map.setView([36.00, 137], 10);
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-
+    url.searchParams.set('lat', latitude);
+    url.searchParams.set('lon', longitude);
+    fetch(url).then((response) => response.json()).then((data) => console.log(data));
     L.tileLayer('https://c.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
     }).addTo(map);
