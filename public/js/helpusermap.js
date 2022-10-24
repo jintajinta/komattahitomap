@@ -29,7 +29,7 @@ function init() {
         let url = new URL('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress');
     url.searchParams.set('lat', latitude);
     url.searchParams.set('lon', longitude);
-    fetch(url).then((response) => response.json()).then((data) => addressjson.textContent=data);
+    fetch(url).then((response) => response.json()).then((data) => document.getElementById("addresjson").value=data);
     };
     // 取得に失敗した場合の処理
     function errorCallback(error) {
