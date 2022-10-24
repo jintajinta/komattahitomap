@@ -8,6 +8,7 @@ function init() {
     var map = L.map('map');
     map.setView([36.00, 137], 10);
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    let url = new URL('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress');
     url.searchParams.set('lat', latitude);
     url.searchParams.set('lon', longitude);
     fetch(url).then((response) => response.json()).then((data) => console.log(data));
