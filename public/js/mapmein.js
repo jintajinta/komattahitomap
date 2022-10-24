@@ -16,7 +16,7 @@ function init() {
         L.marker([position[i].lat, position[i].lng]).addTo(map).bindPopup(pingcontents).openPopup();
     }
 
-    function successCallback(position) {
+    async function successCallback(position) {
         // 緯度を取得し画面に表示
         latitude = position.coords.latitude;
         document.getElementById("latitude").innerHTML = latitude;
@@ -27,15 +27,27 @@ function init() {
         document.getElementById("mylng").value = longitude;
         map.setView([latitude, longitude], 10);
         L.marker([latitude, longitude]).addTo(map).bindPopup("現在地").openPopup();
+        const url = new URL('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress');
+        url.searchParams.set('lat', coords.latitude);
+        url.searchParams.set('lon', coords.longitude);
+        const res = await fetch(url.toString());
+        const json = await res.json();
+        const data = json.results;
+        const muniData = GSI.MUNI_ARRAY[json.results.muniCd];
+        const [prefCode, pref, muniCode, city] = muniData.split(',');
+        console.log(`${pref} ${city} ${data.lv01Nm}`);
     };
     // 取得に失敗した場合の処理
     function errorCallback(error) {
         console.log(error)
         alert("位置情報が取得できませんでした");
     };
+
+    
 }
 
 function deletepositon(id) {
     document.getElementById("pingid").value = id;
     document.deleteform.submit();
 }
+<script src="https://maps.gsi.go.jp/js/muni.js"></script>
