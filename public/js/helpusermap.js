@@ -35,7 +35,7 @@ function init() {
         const muniData = GSI.MUNI_ARRAY[json.results.muniCd];
         const [prefCode, pref, muniCode, city] = muniData.split(',');
         let tweettext=`${pref} ${city} ${data.lv01Nm}`+"でボランティア活動中！";
-        document.getElementById("Tweet").dataset.text=tweettext;
+        document.getElementById("address").value=tweettext;
     };
     // 取得に失敗した場合の処理
     function errorCallback(error) {
@@ -47,4 +47,8 @@ function init() {
 function help_button_pressed(id) {
     document.getElementById("taskid").value = id;
     document.helpform.submit();
+}
+
+function tweet(){
+    window.open('https://twitter.com/share?text=' + document.getElementById("address").value + '&url=' + 'https://enthousiaste-fromage-22608.herokuapp.com'  + '&hashtags=' + 'helpジャスフォ');
 }
