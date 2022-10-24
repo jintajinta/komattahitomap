@@ -1,6 +1,5 @@
 let latitude
 let longitude
-var GSI = {};
 function init() {
     let position_data = document.getElementById("position").value;
     let position=JSON.parse(position_data);
@@ -18,6 +17,7 @@ function init() {
     }
 
     async function successCallback(position) {
+        let GSI = {};
         // 緯度を取得し画面に表示
         latitude = position.coords.latitude;
         document.getElementById("latitude").innerHTML = latitude;
