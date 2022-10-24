@@ -1,6 +1,7 @@
 let latitude
 let longitude
 function init() {
+    let GSI = {};
     let position_data = document.getElementById("position").value;
     let position=JSON.parse(position_data);
     var map = L.map('map');
