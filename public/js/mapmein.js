@@ -49,11 +49,6 @@ function init() {
         const json = await res.json();
         const data = json.results;
     
-        // 変換表から都道府県などを取得
-        const muniData = GSI.MUNI_ARRAY[json.results.muniCd];
-        // 都道府県コード,都道府県名,市区町村コード,市区町村名 に分割
-        const [prefCode, pref, muniCode, city] = muniData.split(',');
-    
         // 画面に反映
         console.log(json)
       };
