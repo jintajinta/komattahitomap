@@ -1,3 +1,5 @@
+const { json } = require("express");
+
 let latitude
 let longitude
 var GSI = {};
@@ -29,12 +31,8 @@ function init() {
         let url = new URL('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress');
         url.searchParams.set('lat', latitude);
         url.searchParams.set('lon', longitude);
-        let res=fetch(url.toString());
-        let json = res.json();
-        let data = json.results;
-        let muniData = GSI.MUNI_ARRAY[json.results.muniCd];
-        let [prefCode, pref, muniCode, city] = muniData.split(',');
-        console.log(`${pref} ${city} ${data.lv01Nm}`);
+        let res=fetch(url).then((response) => response.json()).then((data) => {json=data});
+        console.log(json)
     };
     // 取得に失敗した場合の処理
     function errorCallback(error) {
