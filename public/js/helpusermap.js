@@ -13,7 +13,6 @@ function init() {
     url.searchParams.set('lat', latitude);
     url.searchParams.set('lon', longitude);
     fetch(url).then((response) => response.json()).then((data) => console.log(data));
-    console.log(response)
     L.tileLayer('https://c.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
     }).addTo(map);
