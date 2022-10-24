@@ -30,7 +30,8 @@ function init() {
         url.searchParams.set('lat', latitude);
         url.searchParams.set('lon', longitude);
         const res=await fetch(url);
-        console.log(res)
+        const json = await res.json();
+        console.log(json)
     };
     // 取得に失敗した場合の処理
     function errorCallback(error) {
