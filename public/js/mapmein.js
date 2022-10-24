@@ -6,7 +6,6 @@ function init() {
     let position=JSON.parse(position_data);
     var map = L.map('map');
     map.setView([36.00, 137], 10);
-    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     navigator.geolocation.getCurrentPosition(
         geoLoc => {
           getAddress(geoLoc.coords);
