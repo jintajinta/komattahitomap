@@ -6,7 +6,10 @@ function init() {
     var map = L.map('map');
     map.setView([36.00, 137], 10);
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-    
+    const url = new URL('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress');
+        url.searchParams.set('lat', latitude);
+        url.searchParams.set('lon', longitude);
+        fetch(url).then((response) => response.json()).then((data) => console.log(data));
     L.tileLayer('https://c.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
     }).addTo(map);
@@ -25,10 +28,7 @@ function init() {
         document.getElementById("mylng").value = longitude;
         map.setView([latitude, longitude], 10);
         L.marker([latitude, longitude]).addTo(map).bindPopup("現在地").openPopup();
-        const url = new URL('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress');
-        url.searchParams.set('lat', latitude);
-        url.searchParams.set('lon', longitude);
-        fetch(url).then((response) => response.json()).then((data) => console.log(data));
+        
     };
     function errorCallback(error) {
         console.log(error)
