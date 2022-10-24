@@ -31,6 +31,7 @@
 </div>
 
 <body class="bg-light">
+    <button onclick="tweet()">Tweet</button>
     <%- include('./error_messages'); %>
 
         <a id="skippy" class="sr-only sr-only-focusable"
@@ -77,29 +78,47 @@
                 <br>
                 <hr class="mb-4">
                 <table class="table table-striped table table-bordered ">
-                  <thead>
-                    <tr>
-                      <th colspan="4">あなたの投稿した困りごと</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                  <% for(let task of tasks){ %>
-                  <tr>
-                    <td><%= task.content %> </td>
-                    <% if(task.completed){ %>
-                        <td><div>タスク完了</div></td><td></td>
-                    <% }else if(task.canceled ){ %>
-                        <td><div>タスク削除</div></td><td></td>
-                    <% }else{ %>
-                    <td><form action="/solvedform" method="post"><button type="submit" class="btn btn-outline-primary">解決</a> <input type="hidden" id="taskid" name="taskid" value="<%= task.id %>"></form></td>
-                    <td><form action="/deleteform" method="post"><button type="submit" class="btn btn-outline-primary text-danger btn-outline-danger">削除</a> <input type="hidden" id="taskid" name="taskid" value="<%= task.id %>"></form></td>
+                    <thead>
+                        <tr>
+                            <th colspan="4">あなたの投稿した困りごと</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <% for(let task of tasks){ %>
+                        <tr>
+                            <td>
+                                <%= task.content %>
+                            </td>
+                            <% if(task.completed){ %>
+                                <td>
+                                    <div>タスク完了</div>
+                                </td>
+                                <td></td>
+                                <% }else if(task.canceled ){ %>
+                                    <td>
+                                        <div>タスク削除</div>
+                                    </td>
+                                    <td></td>
+                                    <% }else{ %>
+                                        <td>
+                                            <form action="/solvedform" method="post"><button type="submit"
+                                                    class="btn btn-outline-primary">解決</a> <input type="hidden"
+                                                        id="taskid" name="taskid" value="<%= task.id %>"></form>
+                                        </td>
+                                        <td>
+                                            <form action="/deleteform" method="post"><button type="submit"
+                                                    class="btn btn-outline-primary text-danger btn-outline-danger">削除</a>
+                                                    <input type="hidden" id="taskid" name="taskid"
+                                                        value="<%= task.id %>"></form>
+                                        </td>
+                                        <% }%>
+                        </tr>
+                        </tr>
                         <% }%>
-                  </tr>
-                  </tr>
-                  <% }%>
-                  </tbody>
+                            </tbody>
                 </table>
-              </div>
+            </div>
+            <button type="hidden" id="address"></button>
 </body>
 
 
@@ -187,19 +206,33 @@
 
 <script>
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-    function successCallback(position) {
+    async function successCallback(position) {
         // 緯度を取得し画面に表示
         latitude = position.coords.latitude;
         // 経度を取得し画面に表示
         longitude = position.coords.longitude;
-        document.getElementById("mylat").value = latitude; https:
+        document.getElementById("mylat").value = latitude;
         document.getElementById("mylng").value = longitude;
+        let url = new URL('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress');
+        url.searchParams.set('lat', latitude);
+        url.searchParams.set('lon', longitude);
+        const res = await fetch(url);
+        const json = await res.json();
+        const data = json.results;
+        const muniData = GSI.MUNI_ARRAY[json.results.muniCd];
+        const [prefCode, pref, muniCode, city] = muniData.split(',');
+        let tweettext = `${pref} ${city} ${data.lv01Nm}` + "でボランティア活動中！";
+        document.getElementById("address").value = tweettext;
     };
     // 取得に失敗した場合の処理
     function errorCallback(error) {
         console.log(error)
         alert("位置情報が取得できませんでした");
     };
+
+    function tweet() {
+        window.open('https://twitter.com/share?text=' + document.getElementById("address").value + '&url=' + 'https://enthousiaste-fromage-22608.herokuapp.com' + '&hashtags=' + 'helpジャスフォ');
+    }
 </script>
 
 <script src="./bootstrap/holder.min.js.ダウンロード"></script>
