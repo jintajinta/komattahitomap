@@ -41,6 +41,7 @@ function init() {
     };
 
     const getAddress = async (coords) => {
+        console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
         // 逆ジオコーディング API
         const url = new URL('https://mreversegeocoder.gsi.go.jp/reverse-geocoder/LonLatToAddress');
         url.searchParams.set('lat', coords.latitude);
@@ -48,7 +49,7 @@ function init() {
         const res = await fetch(url.toString());
         const json = await res.json();
         const data = json.results;
-    
+       
         // 画面に反映
         console.log(json)
       };
