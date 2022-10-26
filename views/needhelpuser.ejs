@@ -63,9 +63,12 @@
                         <label for="location_details">位置の詳細</label>
                         <input type="text" class="form-control" id="location_details" name="location_details"
                             placeholder="（例）白い外壁の家の前" required="">
-                        <label for="content">投稿者の見た目</label>
+                        <label for="appearance">投稿者の見た目</label>
                         <input type="text" class="form-control" id="appearance" name="appearance"
                             placeholder="（例）20代 黒い服" required="">
+                        <label for="appearance">募集日時</label>
+                        <input type="datetime" class="form-control" id="needtime" name="needtime"
+                             required="">
                     </div>
                     <input type="hidden" id="mylat" name="mylat" />
                     <input type="hidden" id="mylng" name="mylng" />
@@ -197,6 +200,7 @@
 <script src="./bootstrap/search.js.ダウンロード"></script>
 <script src="./bootstrap/ie-emulation-modes-warning.js.ダウンロード"></script>
 <script src="https://maps.gsi.go.jp/js/muni.js"></script>
+
 </html>
 
 
