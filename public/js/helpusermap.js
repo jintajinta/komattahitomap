@@ -2,7 +2,7 @@ let latitude
 let longitude
 var GSI = {};
 function init() {
-
+    
     let task_data = document.getElementById("tasks").value;
     let task = JSON.parse(task_data);
     console.log(task_data)
