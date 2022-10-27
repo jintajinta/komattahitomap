@@ -47,6 +47,10 @@ router.post('/', function (req, res, next) {
     let location_details = req.body.location_details;
     let appearance = req.body.appearance;
     const userId = req.session.userid;
+    let year=req.body.year;
+    let month=req.body.month;
+    let date=req.body.date;
+    let hour=req.body.time;
     let createdAt = dayjs().tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm:ss');
 
     knex("tasks")
