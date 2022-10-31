@@ -66,75 +66,79 @@
                         <label for="appearance">投稿者の見た目</label>
                         <input type="text" class="form-control" id="appearance" name="appearance"
                             placeholder="（例）20代 黒い服" required="">
-                            <label for="content">助けが必要な日時</label>
-                            <div class="row">
+                        <label for="content">助けが必要な日時</label>
+                        <div class="row">
                             <div class="col">
-                            年<input type="number" class="form-control" id="year" name="year" min="2022" max="2030" required="">
-                          </div>
-                          <div class="col">
-                            月<input type="number" class="form-control" id="month" name="month" min="1" max="12" required="">
-                          </div>
-                          <div class="col">
-                            日<input type="number" class="form-control" id="date" name="date" min="1" max="31" required="">
-                          </div>
-                          <div class="col">
-                            時<input type="number" class="form-control" id="hour" name="hour" min="0" max="23" required="">
-                          </div>
-                          </div>
+                                年<input type="number" class="form-control" id="year" name="year" min="2022" max="2030"
+                                    required="">
+                            </div>
+                            <div class="col">
+                                月<input type="number" class="form-control" id="month" name="month" min="1" max="12"
+                                    required="">
+                            </div>
+                            <div class="col">
+                                日<input type="number" class="form-control" id="date" name="date" min="1" max="31"
+                                    required="">
+                            </div>
+                            <div class="col">
+                                時<input type="number" class="form-control" id="hour" name="hour" min="0" max="23"
+                                    required="">
+                            </div>
                         </div>
                     </div>
-                    <input type="hidden" id="mylat" name="mylat" />
-                    <input type="hidden" id="mylng" name="mylng" />
-                    <div class="container bg-light">
-                        <div class="text-right">
-                            <input type="submit" class="btn btn-info" value="送信">
-                        </div>
-                    </div>
-                </form>
-                <br>
-                <hr class="mb-4">
-                <table class="table table-striped table table-bordered ">
-                    <thead>
-                        <tr>
-                            <th colspan="4">あなたの投稿した困りごと</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                    <% for(let task of tasks){ %>
-                        <tr>
+            </div>
+            <input type="hidden" id="mylat" name="mylat" />
+            <input type="hidden" id="mylng" name="mylng" />
+            <div class="container bg-light">
+                <div class="text-right">
+                    <input type="submit" class="btn btn-info" value="送信">
+                </div>
+            </div>
+            </form>
+            <br>
+            <hr class="mb-4">
+            <table class="table table-striped table table-bordered ">
+                <thead>
+                    <tr>
+                        <th colspan="4">あなたの投稿した困りごと</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <% for(let task of tasks){ %>
+                    <tr>
+                        <td>
+                            <%= task.content %>
+                        </td>
+                        <% if(task.completed){ %>
                             <td>
-                                <%= task.content %>
+                                <div>タスク完了</div>
                             </td>
-                            <% if(task.completed){ %>
+                            <td></td>
+                            <% }else if(task.canceled ){ %>
                                 <td>
-                                    <div>タスク完了</div>
+                                    <div>タスク削除</div>
                                 </td>
                                 <td></td>
-                                <% }else if(task.canceled ){ %>
+                                <% }else{ %>
                                     <td>
-                                        <div>タスク削除</div>
+                                        <form action="/solvedform" method="post"><button type="submit"
+                                                class="btn btn-outline-primary">解決</a> <input type="hidden" id="taskid"
+                                                    name="taskid" value="<%= task.id %>"></form>
                                     </td>
-                                    <td></td>
-                                    <% }else{ %>
-                                        <td>
-                                            <form action="/solvedform" method="post"><button type="submit"
-                                                    class="btn btn-outline-primary">解決</a> <input type="hidden"
-                                                        id="taskid" name="taskid" value="<%= task.id %>"></form>
-                                        </td>
-                                        <td>
-                                            <form action="/deleteform" method="post"><button type="submit"
-                                                    class="btn btn-outline-primary text-danger btn-outline-danger">削除</a>
-                                                    <input type="hidden" id="taskid" name="taskid"
-                                                        value="<%= task.id %>"></form>
-                                        </td>
-                                        <% }%>
-                        </tr>
-                        </tr>
-                        <% }%>
-                            </tbody>
-                </table>
-            </div>
-            <input type="hidden" id="address">
+                                    <td>
+                                        <form action="/deleteform" method="post"><button type="submit"
+                                                class="btn btn-outline-primary text-danger btn-outline-danger">削除</a>
+                                                <input type="hidden" id="taskid" name="taskid" value="<%= task.id %>">
+                                        </form>
+                                    </td>
+                                    <% }%>
+                    </tr>
+                    </tr>
+                    <% }%>
+                        </tbody>
+            </table>
+        </div>
+        <input type="hidden" id="address">
 </body>
 
 
@@ -218,12 +222,12 @@
 
 
 <script>
-let now = new Date();
-console.log(now)
-document.getElementById("year").value=now.getFullYear();
-document.getElementById("month").value=now.getMonth()+1;
-document.getElementById("date").value=now.getDate();
-document.getElementById("hour").value=now.getHours();
+    let now = new Date();
+    console.log(now)
+    document.getElementById("year").value = now.getFullYear();
+    document.getElementById("month").value = now.getMonth() + 1;
+    document.getElementById("date").value = now.getDate();
+    document.getElementById("hour").value = now.getHours();
 </script>
 
 
