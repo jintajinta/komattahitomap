@@ -13,10 +13,25 @@ function init() {
         attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
     }).addTo(map);
     let pingcontents = ""
+    let color='';
     for (i = 0; i <= task.length - 1; i++) {
+        if(task[i].class=="力仕事"){
+            color='red';
+        }else if(task[i].class=="軽作業"){
+            color='green';
+        }
+        else if(task[i].class=="物探し"){
+            color='yellow';
+        }
+        else if(task[i].class=="道案内"){
+            color='violet';
+        }
+        else if(task[i].class=="その他"){
+            color='purple';
+        }
         if (!Boolean(task[i].canceled) && !Boolean(task[i].completed)) {
             pingcontents = "分類:" + task[i].class + "<br>内容:" + task[i].content + "<br>位置の詳細:" + task[i].location_details + "<br>投稿者の見た目:" + task[i].appearance + "<br><input type = \"button\" value = \"助けに行く\" onClick = \"help_button_pressed(" + task[i].id + ")\">"
-            L.marker([task[i].lat, task[i].lng],{icon: L.spriteIcon('red')}).addTo(map).bindPopup(pingcontents).openPopup();
+            L.marker([task[i].lat, task[i].lng],{icon: L.spriteIcon(color)}).addTo(map).bindPopup(pingcontents).openPopup();
         }
     }
 
