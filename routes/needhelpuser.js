@@ -50,7 +50,7 @@ router.post('/', function (req, res, next) {
     let year=req.body.year;
     let month=req.body.month;
     let date=req.body.date;
-    let hour=req.body.time;
+    let hour=req.body.hour;
     let createdAt = dayjs().tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm:ss');
     let needhelpAt= year+"年"+month+"月"+date+"日"+hour+"時";
     knex("tasks")
