@@ -52,7 +52,13 @@ router.post('/', function (req, res, next) {
     let date=req.body.date;
     let hour=req.body.time;
     let createdAt = dayjs().tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm:ss');
-    let needhelpAt= dayjs().year(year).month(month).date(date).hour(hour).minute(0).second(0).format('YYYY-MM-DD HH:mm:ss')
+    dayjs().year(year)
+    dayjs().month(month)
+    dayjs().date(date)
+    dayjs().hour(hour)
+    dayjs().minute(0)
+    dayjs().second(0)
+    let needhelpAt= dayjs().format('YYYY-MM-DD HH:mm:ss')
 
     knex("tasks")
         .insert({ lat: mylat, lng: mylng, content: contents, class: classification, post_user_id: userId, location_details: location_details, appearance: appearance ,ts:createdAt,needts:needhelpAt})
