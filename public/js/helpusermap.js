@@ -16,7 +16,7 @@ function init() {
     for (i = 0; i <= task.length - 1; i++) {
         if (!Boolean(task[i].canceled) && !Boolean(task[i].completed)) {
             pingcontents = "分類:" + task[i].class + "<br>内容:" + task[i].content + "<br>位置の詳細:" + task[i].location_details + "<br>投稿者の見た目:" + task[i].appearance + "<br><input type = \"button\" value = \"助けに行く\" onClick = \"help_button_pressed(" + task[i].id + ")\">"
-            L.marker([task[i].lat, task[i].lng]).addTo(map).bindPopup(pingcontents).openPopup();
+            L.marker([task[i].lat, task[i].lng],{icon: L.spriteIcon('red')}).addTo(map).bindPopup(pingcontents).openPopup();
         }
     }
 
