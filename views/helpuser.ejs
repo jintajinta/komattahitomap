@@ -36,7 +36,7 @@
 </div>
 
 <body onload="init()">
-<button onclick="tweet()">Tweet</button>
+  <button onclick="tweet()">Tweet</button>
   <div id="map" class="d-block mx-auto img-fluid w-75" style="width:em;height:30em"></div>
   <div class="py-5 text-center">
 
@@ -53,7 +53,12 @@
           <th style="width: 50%" class="text-center header">
             <%= help.content %>
           </th>
-          <th style="width: 50%"><input type="submit" value="キャンセル" id="passwd1" class="form-control"></th>
+          <th style="width: 50%">
+            <form action="/cancelform" method="POST">
+              <input type="hidden" value="<%= help.id %>" id="helpid" name="helpid">
+              <input type="submit" value="キャンセル" id="passwd1" class="form-control">
+            </form>
+          </th>
         </tbody>
         <% }}%>
     </table>
@@ -63,10 +68,12 @@
         <th colspan="2">あなたが今までにしたタスク</th>
       </tr>
       <% for(let help of helps.rows){ if(help.completed==1&&help.canceled==0){ %>
-      <tbody>
-        <th style="width: 100%" class="text-center header"> <%= help.content %></th>
-      </tbody>
-      <% }}%>
+        <tbody>
+          <th style="width: 100%" class="text-center header">
+            <%= help.content %>
+          </th>
+        </tbody>
+        <% }}%>
     </table>
   </div>
 
@@ -87,7 +94,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
       integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
       crossorigin="anonymous"></script>
-      <button type="hidden" id="address"></button>
+    <button type="hidden" id="address"></button>
 </body>
 
 
@@ -146,4 +153,5 @@
 <script src="./bootstrap/search.js.ダウンロード"></script>
 <script src="./bootstrap/ie-emulation-modes-warning.js.ダウンロード"></script>
 <script src="https://maps.gsi.go.jp/js/muni.js"></script>
+
 </html>
