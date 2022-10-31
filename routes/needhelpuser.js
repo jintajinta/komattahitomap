@@ -52,12 +52,7 @@ router.post('/', function (req, res, next) {
     let date=req.body.date;
     let hour=req.body.time;
     let createdAt = dayjs().tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm:ss');
-    dayjs().year(year)
-    dayjs().month(month)
-    dayjs().date(date)
-    dayjs().hour(hour)
-    dayjs().minute(0)
-    dayjs().second(0)
+    dayjs().set('year',year)
     let needhelpAt= dayjs().format('YYYY-MM-DD HH:mm:ss')
 
     knex("tasks")
