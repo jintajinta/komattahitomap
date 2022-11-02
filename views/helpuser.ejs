@@ -71,6 +71,9 @@
       <% for(let help of helps.rows){ if(help.completed==1&&help.canceled==0){ %>
         <tbody>
           <th style="width: 100%" class="text-center header">
+            <%= help.ts %>
+          </th>
+          <th style="width: 100%" class="text-center header">
             <%= help.content %>
           </th>
         </tbody>
