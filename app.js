@@ -44,6 +44,7 @@ app.use('/deleteform', require('./routes/deleteform'));
 app.use('/sh', require('./routes/sh'));
 app.use('/test', require('./routes/test'));
 app.use('/cancelform', require('./routes/cancelform'));
+app.use('/sendmessage', require('./routes/sendmessage'));
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

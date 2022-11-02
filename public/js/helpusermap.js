@@ -5,7 +5,6 @@ function init() {
     
     let task_data = document.getElementById("tasks").value;
     let task = JSON.parse(task_data);
-    console.log(task_data)
     var map = L.map('map');
     map.setView([36.00, 137], 10);
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
@@ -54,7 +53,6 @@ function init() {
     };
     // 取得に失敗した場合の処理
     function errorCallback(error) {
-        console.log(error)
         alert("位置情報が取得できませんでした");
     };
 }
