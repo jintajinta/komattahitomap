@@ -50,10 +50,10 @@
       </thead>
       <% for(let help of helps.rows){ if(help.completed==0&&help.canceled==0){ %>
         <tbody>
-          <th style="width: 50%" class="text-center header">
+          <th class="text-center header">
             <%= help.content %>
           </th>
-          <th style="width: 50%">
+          <th>
             <form action="/cancelform" method="POST">
               <input type="hidden" value="<%= help.helpid %>" id="helpid" name="helpid">
               
@@ -70,10 +70,10 @@
       </tr>
       <% for(let help of helps.rows){ if(help.completed==1&&help.canceled==0){ %>
         <tbody>
-          <th style="width: 100%" class="text-center header">
+          <th class="text-center header">
             <%= help.needts %>
           </th>
-          <th style="width: 100%" class="text-center header">
+          <th class="text-center header">
             <%= help.content %>
           </th>
         </tbody>
