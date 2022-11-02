@@ -51,10 +51,13 @@ router.post('/', function (req, res, next) {
     let month=req.body.month;
     let date=req.body.date;
     let hour=req.body.hour;
+    let number_of_people = req.body.number_of_people
+    let time_required = req.body.time_required
     let createdAt = dayjs().tz('Asia/Tokyo').format('YYYY-MM-DD HH:mm:ss');
     let needhelpAt= year+"年"+month+"月"+date+"日"+hour+"時";
     knex("tasks")
-        .insert({ lat: mylat, lng: mylng, content: contents, class: classification, post_user_id: userId, location_details: location_details, appearance: appearance ,ts:createdAt,needts:needhelpAt})
+        .insert({ lat: mylat, lng: mylng, content: contents, class: classification, 
+            post_user_id: userId, location_details: location_details, appearance: appearance ,ts:createdAt,needts:needhelpAt,number_of_people:number_of_people,time_required:time_required})
         .then(function () {
             res.redirect('/needhelpuser');
         })
