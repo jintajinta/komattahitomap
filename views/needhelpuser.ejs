@@ -121,12 +121,16 @@
                         </td>
                         <% if(task.completed){ %>
                             <td>
-                                <div>タスク完了</div>
+                                お礼の一言<br>
+                                <form action="">
+                                    <input type="text" placeholder="">
+                                    <button type="submit" class="btn btn-outline-primary">送信</button>
+                                </form>
                             </td>
                             <td></td>
                             <% }else if(task.canceled ){ %>
                                 <td>
-                                    <div>タスク削除</div>
+                                    <div>解決済</div>
                                 </td>
                                 <td></td>
                                 <% }else{ %>
