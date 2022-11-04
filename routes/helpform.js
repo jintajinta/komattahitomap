@@ -15,7 +15,11 @@ router.post('/', function (req, res, next) {
     knex("helps")
         .insert({ user_id: userId, task_id: taskid ,help_dt:helpAt})
         .then(function () {
-            res.redirect('/');
+            knex
+            .raw('update tasks set number_of_applicants =number_of_applicants+1 where id=?;',[taskid])
+            .then(function(){
+                res.redirect('/');
+            })
         })
         .catch(function (err) {
             console.error(err);
