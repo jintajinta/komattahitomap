@@ -30,7 +30,7 @@ function init() {
         }
         if (!Boolean(task[i].canceled) && !Boolean(task[i].completed) && (task[i].number_of_people>task[i].number_of_applicants)) {
             pingcontents = "分類:" + task[i].class + "<br>内容:" + task[i].content + "<br>位置の詳細:" + task[i].location_details + "<br>投稿者の見た目:" + task[i].appearance + "<br>募集日時:"+task[i].needts+"<br>募集人数:"+task[i].number_of_people+"人<br>所要時間:"+task[i].time_required+"分<br><input type = \"button\" value = \"助けに行く\" onClick = \"help_button_pressed(" + task[i].id + ")\">"
-            L.marker([task[i].lat, task[i].lng],{icon: L.spriteIcon(color)}).addTo(map).bindPopup(pingcontents).openPopup();
+            L.marker([task[i].lat, task[i].lng],{icon: L.spriteIcon(color)}).addTo(map).bindPopup(pingcontents);
         }
     }
 
