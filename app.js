@@ -29,7 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // router
-app.use('/', require('./routes/needhelpuser'));
+app.use('/', require('./routes/index'));
 app.use('/signup', require('./routes/signup'));
 app.use('/map', require('./routes/map'));
 app.use('/signin', require('./routes/signin'));
@@ -43,6 +43,8 @@ app.use('/solvedform', require('./routes/solvedform'));
 app.use('/deleteform', require('./routes/deleteform'));
 app.use('/sh', require('./routes/sh'));
 app.use('/test', require('./routes/test'));
+app.use('/cancelform', require('./routes/cancelform'));
+app.use('/sendmessage', require('./routes/sendmessage'));
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

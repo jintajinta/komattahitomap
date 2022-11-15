@@ -6,7 +6,6 @@ router.get('/', function (req, res, next) {
   knex("position_test")
     .select("*")
     .then(function (results) {
-      console.log(results[0].lat)
       res.render("map",
         {
           title: 'Map',

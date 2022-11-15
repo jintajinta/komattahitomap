@@ -6,7 +6,6 @@ router.post('/', function (req, res, next) {
     let mylng=req.body.mylng;
     let mylat=req.body.mylat;
     let contents=req.body.contents;
-    console.log(mylng+mylat+contents)
     knex("position_test")
         .insert({ lat: mylat, lng: mylng,contents:contents })
         .then(function () {
