@@ -69,7 +69,7 @@
 
     <table class="table table-striped table table-bordered">
       <tr>
-        <th colspan="4">あなたが今までにした困りごと</th>
+        <th colspan="5">あなたが今までにした困りごと</th>
       </tr>
       <tr>
         <th>
@@ -94,8 +94,12 @@
             <%= help.message %>
           </th>
           <th>
-            <button type="submit" id="passwd1" class="btn btn-outline-danger">通報</button>
+            <button type="submit" id="passwd1" class="btn btn-outline-primary" onclick="highlyrated()">高評価</button>
           </th>
+          <th>
+            <button type="submit" id="passwd1" class="btn btn-outline-" onclick="lowryrated()">低評価</button>
+          </th>
+          
         </tbody>
         <% }}%>
     </table>
